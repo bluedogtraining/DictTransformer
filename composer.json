@@ -1,5 +1,5 @@
 {
-    "name": "ryan-senn/dict-transformer",
+    "name": "bluedogtraining/dict-transformer",
     "description": "Easy way to transform relational data to a Dictionary",
     "type": "library",
     "license": "MIT",
