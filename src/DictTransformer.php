@@ -2,6 +2,7 @@
 
 namespace DictTransformer;
 
+use DictTransformer\Exceptions\InvalidIdException;
 use DictTransformer\Exceptions\InvalidResourceException;
 use DictTransformer\Exceptions\MissingTransformException;
 use DictTransformer\Exceptions\MissingKeyException;
@@ -20,6 +21,11 @@ class DictTransformer
     private $entities = [];
 
     /**
+     * @var array
+     */
+    private $cache = [];
+
+    /**
      * @param Item|Collection|NullableItem $resource
      * @param array                        $includes
      *
@@ -32,6 +38,7 @@ class DictTransformer
 
         $entities = $this->entities;
         $this->entities = [];
+        $this->cache = [];
 
         return [
             'result'   => $keys,
@@ -156,14 +163,15 @@ class DictTransformer
             throw new MissingGetIdException();
         }
 
-        $id = $entity->getId();
+        $entityId = $entity->getId();
 
-        if (isset($this->entities[$transformer::KEY][$id])) {
-            $data = $this->entities[$transformer::KEY][$id];
+        if (isset($this->cache[$transformer::KEY][$entityId])) {
+            $data = $this->cache[$transformer::KEY][$entityId];
         }
         else {
             $data = $transformer->transform($entity);
-            $data['id'] = $id;
+
+            $this->cache[$transformer::KEY][$entityId] = $data;
         }
 
         foreach ($includes as $include) {
@@ -182,11 +190,17 @@ class DictTransformer
             $data[$current] = $this->transformResource($resource, $rest);
         }
 
-        $this->entities[$transformer::KEY][$id] = isset($this->entities[$transformer::KEY][$id])
-            ? array_merge($this->entities[$transformer::KEY][$id], $data)
+        $idField = $this->getIdField($transformer);
+
+        if (!isset($data[$idField])) {
+            throw new InvalidIdException;
+        }
+
+        $this->entities[$transformer::KEY][$data[$idField]] = isset($this->entities[$transformer::KEY][$data[$idField]])
+            ? array_merge($this->entities[$transformer::KEY][$data[$idField]], $data)
             : $data;
 
-        return $id;
+        return $data[$idField];
     }
 
     /**
@@ -215,12 +229,43 @@ class DictTransformer
     /**
      * @param $transformer
      *
+     * @return string
+     */
+    private function getIdField($transformer): string
+    {
+        $transformerName = get_class($transformer);
+        return $this->hasIdConstant($transformer) ? $transformerName::ID : 'id';
+    }
+
+    /**
+     * @param $transformer
+     *
+     * @return bool
+     */
+    private function hasIdConstant($transformer)
+    {
+        return $this->hasConstant($transformer, 'ID');
+    }
+
+    /**
+     * @param $transformer
+     *
      * @return bool
      */
     private function hasKeyConstant($transformer)
     {
-        $transformerName = get_class($transformer);
+        return $this->hasConstant($transformer, 'KEY');
+    }
 
-        return defined("$transformerName::KEY");
+    /**
+     * @param        $transformer
+     * @param string $constant
+     *
+     * @return bool
+     */
+    private function hasConstant($transformer, string $constant)
+    {
+        $transformerName = get_class($transformer);
+        return defined("$transformerName::$constant");
     }
 }
