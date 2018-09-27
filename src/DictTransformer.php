@@ -26,13 +26,13 @@ class DictTransformer
     private $cache = [];
 
     /**
-     * @param Item|Collection|NullableItem $resource
-     * @param array                        $includes
+     * @param ResourceInterface $resource
+     * @param array             $includes
      *
      * @return array
      * @throws InvalidResourceException
      */
-    public function transform($resource, array $includes = [])
+    public function transform(ResourceInterface $resource, array $includes = [])
     {
         $keys = $this->transformResource($resource, $includes);
 
@@ -47,8 +47,8 @@ class DictTransformer
     }
 
     /**
-     * @param Item|Collection $resource
-     * @param array           $includes
+     * @param ResourceInterface $resource
+     * @param array             $includes
      *
      * @return array
      * @throws InvalidResourceException

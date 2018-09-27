@@ -2,7 +2,7 @@
 
 namespace DictTransformer;
 
-class Collection
+class Collection implements ResourceInterface
 {
 
     /**

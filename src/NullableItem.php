@@ -2,7 +2,7 @@
 
 namespace DictTransformer;
 
-class NullableItem
+class NullableItem implements ResourceInterface
 {
     /**
      * @var mixed

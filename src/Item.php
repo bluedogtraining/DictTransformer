@@ -2,7 +2,7 @@
 
 namespace DictTransformer;
 
-class Item
+class Item implements ResourceInterface
 {
 
     /**
