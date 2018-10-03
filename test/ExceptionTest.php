@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 use DictTransformer\DictTransformer;
 
-use DictTransformer\Item;
+use DictTransformer\Resources\Item;
 
 use Test\Entities\MissingGetIdTile;
 use Test\Entities\Tile;

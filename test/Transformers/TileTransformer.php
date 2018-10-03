@@ -2,7 +2,7 @@
 
 namespace Test\Transformers;
 
-use DictTransformer\Collection;
+use DictTransformer\Resources\Collection;
 use Test\Entities\Tile;
 
 /**

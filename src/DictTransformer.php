@@ -9,6 +9,11 @@ use DictTransformer\Exceptions\MissingKeyException;
 use DictTransformer\Exceptions\MissingIncludeException;
 use DictTransformer\Exceptions\MissingGetIdException;
 
+use DictTransformer\Resources\Collection;
+use DictTransformer\Resources\Item;
+use DictTransformer\Resources\NullableItem;
+use DictTransformer\Resources\ResourceInterface;
+
 /**
  * @package DictTransformer
  */
@@ -87,7 +92,7 @@ class DictTransformer
      */
     private function transformItem(Item $item, array $includes = [])
     {
-        $entity = $item->getEntity();
+        $entity = $item->getData();
         $transformer = $item->getTransformer();
 
         $key = $this->transformEntity($entity, $transformer, $includes);
@@ -97,7 +102,7 @@ class DictTransformer
 
     private function transformNullableItem(NullableItem $item, array $includes = [])
     {
-        $entity = $item->getEntity();
+        $entity = $item->getData();
         $transformer = $item->getTransformer();
 
         $key = $key = $this->transformEntity($entity, $transformer, $includes, true);
@@ -117,7 +122,7 @@ class DictTransformer
      */
     private function transformCollection(Collection $collection, array $includes = [])
     {
-        $entities = $collection->getEntities();
+        $entities = $collection->getData();
         $transformer = $collection->getTransformer();
 
         $keys = [];

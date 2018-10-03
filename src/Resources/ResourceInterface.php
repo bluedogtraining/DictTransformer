@@ -1,6 +1,6 @@
 <?php
 
-namespace DictTransformer;
+namespace DictTransformer\Resources;
 
 interface ResourceInterface
 {

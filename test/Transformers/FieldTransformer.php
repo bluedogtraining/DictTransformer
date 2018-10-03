@@ -2,10 +2,10 @@
 
 namespace Test\Transformers;
 
-use DictTransformer\NullableItem;
+use DictTransformer\Resources\NullableItem;
 use Test\Entities\Field;
 
-use DictTransformer\Item;
+use DictTransformer\Resources\Item;
 
 /**
  * @package App\Transformers
