@@ -138,10 +138,10 @@ class DictTransformer
     }
 
     /**
-     * @param       $entity
-     * @param       $transformer
-     * @param array $includes
-     * @param bool  $nullable
+     * @param                      $entity
+     * @param TransformerInterface $transformer
+     * @param array                $includes
+     * @param bool                 $nullable
      *
      * @return mixed
      * @throws MissingIncludeException
@@ -150,7 +150,7 @@ class DictTransformer
      * @throws InvalidResourceException
      * @throws MissingGetIdException
      */
-    private function transformEntity($entity, $transformer, array $includes = [], $nullable = false)
+    private function transformEntity($entity, TransformerInterface $transformer, array $includes = [], $nullable = false)
     {
         if (!method_exists($transformer, 'transform')) {
             throw new MissingTransformException;
@@ -232,43 +232,43 @@ class DictTransformer
     }
 
     /**
-     * @param $transformer
+     * @param TransformerInterface $transformer
      *
      * @return string
      */
-    private function getIdField($transformer): string
+    private function getIdField(TransformerInterface $transformer): string
     {
         $transformerName = get_class($transformer);
         return $this->hasIdConstant($transformer) ? $transformerName::ID : 'id';
     }
 
     /**
-     * @param $transformer
+     * @param TransformerInterface $transformer
      *
      * @return bool
      */
-    private function hasIdConstant($transformer)
+    private function hasIdConstant(TransformerInterface $transformer)
     {
         return $this->hasConstant($transformer, 'ID');
     }
 
     /**
-     * @param $transformer
+     * @param TransformerInterface $transformer
      *
      * @return bool
      */
-    private function hasKeyConstant($transformer)
+    private function hasKeyConstant(TransformerInterface $transformer)
     {
         return $this->hasConstant($transformer, 'KEY');
     }
 
     /**
-     * @param        $transformer
-     * @param string $constant
+     * @param TransformerInterface $transformer
+     * @param string               $constant
      *
      * @return bool
      */
-    private function hasConstant($transformer, string $constant)
+    private function hasConstant(TransformerInterface $transformer, string $constant)
     {
         $transformerName = get_class($transformer);
         return defined("$transformerName::$constant");

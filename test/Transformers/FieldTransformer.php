@@ -4,13 +4,14 @@ namespace Test\Transformers;
 
 use DictTransformer\Resources\NullableItem;
 use Test\Entities\Field;
+use DictTransformer\TransformerInterface;
 
 use DictTransformer\Resources\Item;
 
 /**
  * @package App\Transformers
  */
-class FieldTransformer
+class FieldTransformer implements TransformerInterface
 {
 
     const KEY = 'fields';

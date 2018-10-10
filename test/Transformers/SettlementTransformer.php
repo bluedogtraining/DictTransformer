@@ -3,8 +3,9 @@
 namespace Test\Transformers;
 
 use Test\Entities\Settlement;
+use DictTransformer\TransformerInterface;
 
-class SettlementTransformer
+class SettlementTransformer implements TransformerInterface
 {
 
     const KEY = 'settlements';

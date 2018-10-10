@@ -2,10 +2,12 @@
 
 namespace Test\Transformers\Exceptions;
 
+use DictTransformer\TransformerInterface;
+
 /**
  * @package App\Transformers
  */
-class MissingIncludeTransformer
+class MissingIncludeTransformer implements TransformerInterface
 {
 
     const KEY = 'tiles';

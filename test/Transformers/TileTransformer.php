@@ -4,11 +4,12 @@ namespace Test\Transformers;
 
 use DictTransformer\Resources\Collection;
 use Test\Entities\Tile;
+use DictTransformer\TransformerInterface;
 
 /**
  * @package App\Transformers
  */
-class TileTransformer
+class TileTransformer implements TransformerInterface
 {
 
     const KEY = 'tiles';

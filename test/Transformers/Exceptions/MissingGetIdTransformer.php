@@ -2,10 +2,12 @@
 
 namespace Test\Transformers\Exceptions;
 
+use DictTransformer\TransformerInterface;
+
 /**
  * @package App\Transformers
  */
-class MissingGetIdTransformer
+class MissingGetIdTransformer implements TransformerInterface
 {
 
     const KEY = 'fields';
