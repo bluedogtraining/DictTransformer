@@ -14,7 +14,10 @@ use DictTransformer\Resources\Item;
 class FieldTransformer implements TransformerInterface
 {
 
-    const KEY = 'fields';
+    public function getKey()
+    {
+        return 'fields';
+    }
 
     /**
      * @param Field $field

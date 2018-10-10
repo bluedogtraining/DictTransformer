@@ -9,8 +9,10 @@ use DictTransformer\TransformerInterface;
  */
 class MissingIncludeTransformer implements TransformerInterface
 {
-
-    const KEY = 'tiles';
+    public function getKey()
+    {
+        return 'tiles';
+    }
 
     public function transform($data)
     {

@@ -7,8 +7,10 @@ use DictTransformer\TransformerInterface;
 
 class SettlementTransformer implements TransformerInterface
 {
-
-    const KEY = 'settlements';
+    public function getKey()
+    {
+        return 'settlements';
+    }
 
     /**
      * @param Settlement $settlement

@@ -5,7 +5,6 @@ namespace DictTransformer;
 use DictTransformer\Exceptions\InvalidIdException;
 use DictTransformer\Exceptions\InvalidResourceException;
 use DictTransformer\Exceptions\MissingTransformException;
-use DictTransformer\Exceptions\MissingKeyException;
 use DictTransformer\Exceptions\MissingIncludeException;
 use DictTransformer\Exceptions\MissingGetIdException;
 
@@ -87,7 +86,6 @@ class DictTransformer
      * @return mixed
      * @throws MissingGetIdException
      * @throws MissingIncludeException
-     * @throws MissingKeyException
      * @throws MissingTransformException
      */
     private function transformItem(Item $item, array $includes = [])
@@ -117,7 +115,6 @@ class DictTransformer
      * @return array
      * @throws MissingGetIdException
      * @throws MissingIncludeException
-     * @throws MissingKeyException
      * @throws MissingTransformException
      */
     private function transformCollection(Collection $collection, array $includes = [])
@@ -145,7 +142,6 @@ class DictTransformer
      *
      * @return mixed
      * @throws MissingIncludeException
-     * @throws MissingKeyException
      * @throws MissingTransformException
      * @throws InvalidResourceException
      * @throws MissingGetIdException
@@ -154,10 +150,6 @@ class DictTransformer
     {
         if (!method_exists($transformer, 'transform')) {
             throw new MissingTransformException;
-        }
-
-        if (!$this->hasKeyConstant($transformer)) {
-            throw new MissingKeyException;
         }
 
         if ($nullable && $entity == null) {
@@ -170,13 +162,13 @@ class DictTransformer
 
         $entityId = $entity->getId();
 
-        if (isset($this->cache[$transformer::KEY][$entityId])) {
-            $data = $this->cache[$transformer::KEY][$entityId];
+        if (isset($this->cache[$transformer->getKey()][$entityId])) {
+            $data = $this->cache[$transformer->getKey()][$entityId];
         }
         else {
             $data = $transformer->transform($entity);
 
-            $this->cache[$transformer::KEY][$entityId] = $data;
+            $this->cache[$transformer->getKey()][$entityId] = $data;
         }
 
         foreach ($includes as $include) {
@@ -201,8 +193,8 @@ class DictTransformer
             throw new InvalidIdException;
         }
 
-        $this->entities[$transformer::KEY][$data[$idField]] = isset($this->entities[$transformer::KEY][$data[$idField]])
-            ? array_merge($this->entities[$transformer::KEY][$data[$idField]], $data)
+        $this->entities[$transformer->getKey()][$data[$idField]] = isset($this->entities[$transformer->getKey()][$data[$idField]])
+            ? array_merge($this->entities[$transformer->getKey()][$data[$idField]], $data)
             : $data;
 
         return $data[$idField];
@@ -250,16 +242,6 @@ class DictTransformer
     private function hasIdConstant(TransformerInterface $transformer)
     {
         return $this->hasConstant($transformer, 'ID');
-    }
-
-    /**
-     * @param TransformerInterface $transformer
-     *
-     * @return bool
-     */
-    private function hasKeyConstant(TransformerInterface $transformer)
-    {
-        return $this->hasConstant($transformer, 'KEY');
     }
 
     /**

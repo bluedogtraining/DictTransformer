@@ -11,7 +11,6 @@ use DictTransformer\Resources\Item;
 use Test\Entities\MissingGetIdTile;
 use Test\Entities\Tile;
 
-use Test\Transformers\Exceptions\MissingKeyTransformer;
 use Test\Transformers\Exceptions\MissingIncludeTransformer;
 use Test\Transformers\Exceptions\MissingTransformTransformer;
 use Test\Transformers\Exceptions\MissingGetIdTransformer;
@@ -27,16 +26,6 @@ class ExceptionTest extends TestCase
         $tile = new Tile(1, 1, 2);
 
         (new DictTransformer)->transform(new Item($tile, new MissingTransformTransformer));
-    }
-
-    /**
-     * @expectedException \DictTransformer\Exceptions\MissingKeyException
-     */
-    public function testMissingKey()
-    {
-        $tile = new Tile(1, 1, 2);
-
-        (new DictTransformer)->transform(new Item($tile, new MissingKeyTransformer));
     }
 
     /**

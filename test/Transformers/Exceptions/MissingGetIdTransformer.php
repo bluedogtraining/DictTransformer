@@ -9,8 +9,10 @@ use DictTransformer\TransformerInterface;
  */
 class MissingGetIdTransformer implements TransformerInterface
 {
-
-    const KEY = 'fields';
+    public function getKey()
+    {
+        return 'fields';
+    }
 
     public function transform($data)
     {

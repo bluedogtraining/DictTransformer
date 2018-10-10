@@ -11,8 +11,10 @@ use DictTransformer\TransformerInterface;
  */
 class TileTransformer implements TransformerInterface
 {
-
-    const KEY = 'tiles';
+    public function getKey()
+    {
+        return 'tiles';
+    }
 
     /**
      * @param Tile $tile
