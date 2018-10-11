@@ -2,16 +2,26 @@
 
 namespace Test\Transformers;
 
-use DictTransformer\Collection;
+use Bdt\DictTransformer\Resources\Collection;
 use Test\Entities\Tile;
+use Bdt\DictTransformer\TransformerInterface;
 
-/**
- * @package App\Transformers
- */
-class TileTransformer
+class TileTransformer implements TransformerInterface
 {
+    public function getKey()
+    {
+        return 'tiles';
+    }
 
-    const KEY = 'tiles';
+    public function getIdField()
+    {
+        return 'id';
+    }
+
+    public function getId($entity)
+    {
+        return $entity->getId();
+    }
 
     /**
      * @param Tile $tile

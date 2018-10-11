@@ -2,13 +2,13 @@
 
 namespace Test;
 
-use DictTransformer\NullableItem;
+use Bdt\DictTransformer\Resources\NullableItem;
 use PHPUnit\Framework\TestCase;
 
-use DictTransformer\DictTransformer;
+use Bdt\DictTransformer\DictTransformer;
 
-use DictTransformer\Item;
-use DictTransformer\Collection;
+use Bdt\DictTransformer\Resources\Item;
+use Bdt\DictTransformer\Resources\Collection;
 
 use Test\Entities\Tile;
 use Test\Entities\Field;
@@ -20,7 +20,6 @@ use Test\Transformers\FieldTransformer;
 
 class TransformationTest extends TestCase
 {
-
     public function testItemWithNumbers()
     {
         $tile = new Tile(1, 1, 2);

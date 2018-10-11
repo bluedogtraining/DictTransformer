@@ -1,10 +1,13 @@
 <?php
 
-namespace DictTransformer\Exceptions;
+namespace Bdt\DictTransformer\Exceptions;
 
 use Exception;
 
 class InvalidIdException extends Exception
 {
-    protected $message = "Data does not contain the configured ID.";
+    public function __construct($idField)
+    {
+        $this->message = "Data does not contain the configured ID key <{$idField}>";
+    }
 }

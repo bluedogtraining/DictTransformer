@@ -2,18 +2,28 @@
 
 namespace Test\Transformers;
 
-use DictTransformer\NullableItem;
+use Bdt\DictTransformer\Resources\NullableItem;
 use Test\Entities\Field;
+use Bdt\DictTransformer\TransformerInterface;
 
-use DictTransformer\Item;
+use Bdt\DictTransformer\Resources\Item;
 
-/**
- * @package App\Transformers
- */
-class FieldTransformer
+class FieldTransformer implements TransformerInterface
 {
+    public function getKey()
+    {
+        return 'fields';
+    }
 
-    const KEY = 'fields';
+    public function getId($entity)
+    {
+        return $entity->getId();
+    }
+
+    public function getIdField()
+    {
+        return 'id';
+    }
 
     /**
      * @param Field $field

@@ -3,11 +3,24 @@
 namespace Test\Transformers;
 
 use Test\Entities\Settlement2;
+use Bdt\DictTransformer\TransformerInterface;
 
-class Settlement2Transformer
+class Settlement2Transformer implements TransformerInterface
 {
+    public function getKey()
+    {
+        return 'settlements2';
+    }
 
-    const KEY = 'settlements2';
+    public function getIdField()
+    {
+        return 'id';
+    }
+
+    public function getId($entity)
+    {
+        return $entity->getId();
+    }
 
     /**
      * @param Settlement2 $settlement2

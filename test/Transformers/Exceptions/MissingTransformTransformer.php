@@ -2,11 +2,22 @@
 
 namespace Test\Transformers\Exceptions;
 
-/**
- * @package App\Transformers
- */
-class MissingTransformTransformer
-{
+use Bdt\DictTransformer\TransformerInterface;
 
-    const KEY = 'fields';
+class MissingTransformTransformer implements TransformerInterface
+{
+    public function getKey()
+    {
+        return 'fields';
+    }
+
+    public function getIdField()
+    {
+        return 'id';
+    }
+
+    public function getId($entity)
+    {
+        return $entity->getId();
+    }
 }

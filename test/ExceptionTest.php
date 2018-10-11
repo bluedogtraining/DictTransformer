@@ -4,23 +4,24 @@ namespace Test;
 
 use PHPUnit\Framework\TestCase;
 
-use DictTransformer\DictTransformer;
+use Bdt\DictTransformer\DictTransformer;
 
-use DictTransformer\Item;
+use Bdt\DictTransformer\Resources\Item;
 
 use Test\Entities\MissingGetIdTile;
 use Test\Entities\Tile;
 
-use Test\Transformers\Exceptions\MissingKeyTransformer;
+use Test\Transformers\FieldTransformer;
 use Test\Transformers\Exceptions\MissingIncludeTransformer;
 use Test\Transformers\Exceptions\MissingTransformTransformer;
 use Test\Transformers\Exceptions\MissingGetIdTransformer;
+use Test\Transformers\Exceptions\InvalidIdTransformer;
 
 class ExceptionTest extends TestCase
 {
 
     /**
-     * @expectedException \DictTransformer\Exceptions\MissingTransformException
+     * @expectedException \Bdt\DictTransformer\Exceptions\MissingTransformException
      */
     public function testMissingTransform()
     {
@@ -30,17 +31,7 @@ class ExceptionTest extends TestCase
     }
 
     /**
-     * @expectedException \DictTransformer\Exceptions\MissingKeyException
-     */
-    public function testMissingKey()
-    {
-        $tile = new Tile(1, 1, 2);
-
-        (new DictTransformer)->transform(new Item($tile, new MissingKeyTransformer));
-    }
-
-    /**
-     * @expectedException \DictTransformer\Exceptions\MissingIncludeException
+     * @expectedException \Bdt\DictTransformer\Exceptions\MissingIncludeException
      */
     public function testMissingInclude()
     {
@@ -50,12 +41,28 @@ class ExceptionTest extends TestCase
     }
 
     /**
-     * @expectedException \DictTransformer\Exceptions\MissingGetIdException
+     * @expectedException \Bdt\DictTransformer\Exceptions\MissingGetIdException
      */
     public function testMissingGetId()
     {
         $tile = new MissingGetIdTile(1, 2);
 
         (new DictTransformer)->transform(new Item($tile, new MissingGetIdTransformer));
+    }
+    
+    /**
+     * @expectedException \Bdt\DictTransformer\Exceptions\InvalidResourceException
+     */
+    public function testInvalidResource()
+    {
+        (new DictTransformer)->transform(new InvalidResource([], new FieldTransformer));
+    }
+
+    /**
+     * @expectedException \Bdt\DictTransformer\Exceptions\InvalidIdException
+     */
+    public function testInvalidId()
+    {
+        (new DictTransformer)->transform(new Item([], new InvalidIdTransformer));
     }
 }
