@@ -10,7 +10,6 @@ use Bdt\DictTransformer\Resources\Item;
 
 class FieldTransformer implements TransformerInterface
 {
-
     public function getKey()
     {
         return 'fields';
@@ -18,7 +17,7 @@ class FieldTransformer implements TransformerInterface
 
     public function getId($entity)
     {
-        return $entity->getId(); 
+        return $entity->getId();
     }
 
     public function getIdField()

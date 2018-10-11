@@ -20,5 +20,4 @@ class MissingTransformTransformer implements TransformerInterface
     {
         return $entity->getId();
     }
-
 }

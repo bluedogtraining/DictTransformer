@@ -20,7 +20,6 @@ use Test\Transformers\FieldTransformer;
 
 class TransformationTest extends TestCase
 {
-
     public function testItemWithNumbers()
     {
         $tile = new Tile(1, 1, 2);

@@ -22,5 +22,4 @@ class AbstractResource implements ResourceInterface
     {
         return $this->data;
     }
-
 }
