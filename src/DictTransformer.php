@@ -160,15 +160,16 @@ class DictTransformer
             throw new MissingGetIdException();
         }
 
-        $entityId = $entity->getId();
+        $entityId = $transformer->getId($entity);
+        $key      = $transformer->getKey();
 
-        if (isset($this->cache[$transformer->getKey()][$entityId])) {
-            $data = $this->cache[$transformer->getKey()][$entityId];
+        if (isset($this->cache[$key][$entityId])) {
+            $data = $this->cache[$key][$entityId];
         }
         else {
             $data = $transformer->transform($entity);
 
-            $this->cache[$transformer->getKey()][$entityId] = $data;
+            $this->cache[$key][$entityId] = $data;
         }
 
         foreach ($includes as $include) {
@@ -193,8 +194,8 @@ class DictTransformer
             throw new InvalidIdException($idField);
         }
 
-        $this->entities[$transformer->getKey()][$data[$idField]] = isset($this->entities[$transformer->getKey()][$data[$idField]])
-            ? array_merge($this->entities[$transformer->getKey()][$data[$idField]], $data)
+        $this->entities[$key][$data[$idField]] = isset($this->entities[$key][$data[$idField]])
+            ? array_merge($this->entities[$key][$data[$idField]], $data)
             : $data;
 
         return $data[$idField];
