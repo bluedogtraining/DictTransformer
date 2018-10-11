@@ -9,6 +9,14 @@ use DictTransformer\TransformerInterface;
  */
 class MissingTransformTransformer implements TransformerInterface
 {
+    public function getKey()
+    {
+        return 'fields';
+    }
 
-    const KEY = 'fields';
+    public function getId($entity)
+    {
+        return $entity->getId();
+    }
+
 }

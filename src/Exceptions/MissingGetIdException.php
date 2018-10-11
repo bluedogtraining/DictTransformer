@@ -7,5 +7,5 @@ use Exception;
 class MissingGetIdException extends Exception
 {
 
-    protected $message = "Entity does not have a getId method.";
+    protected $message = "Transformer does not have a getId method.";
 }

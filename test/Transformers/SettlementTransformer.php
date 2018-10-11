@@ -12,6 +12,11 @@ class SettlementTransformer implements TransformerInterface
         return 'settlements';
     }
 
+    public function getId($entity)
+    {
+        return $entity->getId();
+    }
+
     /**
      * @param Settlement $settlement
      *

@@ -156,7 +156,7 @@ class DictTransformer
             return null;
         }
 
-        if (!method_exists($entity, "getId")) {
+        if (!method_exists($transformer, "getId")) {
             throw new MissingGetIdException();
         }
 

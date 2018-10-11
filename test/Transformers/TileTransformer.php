@@ -16,6 +16,11 @@ class TileTransformer implements TransformerInterface
         return 'tiles';
     }
 
+    public function getId($entity)
+    {
+        return $entity->getId();
+    }
+
     /**
      * @param Tile $tile
      *
