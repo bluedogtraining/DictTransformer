@@ -2,11 +2,11 @@
 
 namespace Test\Transformers;
 
-use DictTransformer\Resources\NullableItem;
+use Bdt\DictTransformer\Resources\NullableItem;
 use Test\Entities\Field;
-use DictTransformer\TransformerInterface;
+use Bdt\DictTransformer\TransformerInterface;
 
-use DictTransformer\Resources\Item;
+use Bdt\DictTransformer\Resources\Item;
 
 /**
  * @package App\Transformers

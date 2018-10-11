@@ -2,12 +2,12 @@
 
 namespace Test;
 
-use DictTransformer\Resources\NullableItem;
+use Bdt\DictTransformer\Resources\NullableItem;
 use PHPUnit\Framework\TestCase;
 
-use DictTransformer\DictTransformer;
+use Bdt\DictTransformer\DictTransformer;
 
-use DictTransformer\Resources\Collection;
+use Bdt\DictTransformer\Resources\Collection;
 
 use Test\Entities\Field;
 use Test\Entities\Tile;

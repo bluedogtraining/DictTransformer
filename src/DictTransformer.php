@@ -1,21 +1,18 @@
 <?php
 
-namespace DictTransformer;
+namespace Bdt\DictTransformer;
 
-use DictTransformer\Exceptions\InvalidIdException;
-use DictTransformer\Exceptions\InvalidResourceException;
-use DictTransformer\Exceptions\MissingTransformException;
-use DictTransformer\Exceptions\MissingIncludeException;
-use DictTransformer\Exceptions\MissingGetIdException;
+use Bdt\DictTransformer\Exceptions\InvalidIdException;
+use Bdt\DictTransformer\Exceptions\InvalidResourceException;
+use Bdt\DictTransformer\Exceptions\MissingTransformException;
+use Bdt\DictTransformer\Exceptions\MissingIncludeException;
+use Bdt\DictTransformer\Exceptions\MissingGetIdException;
 
-use DictTransformer\Resources\Collection;
-use DictTransformer\Resources\Item;
-use DictTransformer\Resources\NullableItem;
-use DictTransformer\Resources\ResourceInterface;
+use Bdt\DictTransformer\Resources\Collection;
+use Bdt\DictTransformer\Resources\Item;
+use Bdt\DictTransformer\Resources\NullableItem;
+use Bdt\DictTransformer\Resources\ResourceInterface;
 
-/**
- * @package DictTransformer
- */
 class DictTransformer
 {
 

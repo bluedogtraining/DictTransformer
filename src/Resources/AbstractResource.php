@@ -1,6 +1,6 @@
 <?php
 
-namespace DictTransformer\Resources;
+namespace Bdt\DictTransformer\Resources;
 
 class AbstractResource implements ResourceInterface
 {

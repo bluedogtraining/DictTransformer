@@ -3,7 +3,7 @@
 namespace Test\Transformers;
 
 use Test\Entities\Settlement2;
-use DictTransformer\TransformerInterface;
+use Bdt\DictTransformer\TransformerInterface;
 
 class Settlement2Transformer implements TransformerInterface
 {

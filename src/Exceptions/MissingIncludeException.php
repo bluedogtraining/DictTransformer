@@ -1,6 +1,6 @@
 <?php
 
-namespace DictTransformer\Exceptions;
+namespace Bdt\DictTransformer\Exceptions;
 
 use Exception;
 

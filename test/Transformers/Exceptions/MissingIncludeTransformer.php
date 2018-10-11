@@ -2,7 +2,7 @@
 
 namespace Test\Transformers\Exceptions;
 
-use DictTransformer\TransformerInterface;
+use Bdt\DictTransformer\TransformerInterface;
 
 /**
  * @package App\Transformers

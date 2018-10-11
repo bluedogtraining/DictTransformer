@@ -1,6 +1,6 @@
 <?php
 
-namespace DictTransformer;
+namespace Bdt\DictTransformer;
 
 interface TransformerInterface
 {

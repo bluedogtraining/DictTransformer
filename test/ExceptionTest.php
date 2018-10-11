@@ -4,9 +4,9 @@ namespace Test;
 
 use PHPUnit\Framework\TestCase;
 
-use DictTransformer\DictTransformer;
+use Bdt\DictTransformer\DictTransformer;
 
-use DictTransformer\Resources\Item;
+use Bdt\DictTransformer\Resources\Item;
 
 use Test\Entities\MissingGetIdTile;
 use Test\Entities\Tile;
@@ -19,7 +19,7 @@ class ExceptionTest extends TestCase
 {
 
     /**
-     * @expectedException \DictTransformer\Exceptions\MissingTransformException
+     * @expectedException \Bdt\DictTransformer\Exceptions\MissingTransformException
      */
     public function testMissingTransform()
     {
@@ -29,7 +29,7 @@ class ExceptionTest extends TestCase
     }
 
     /**
-     * @expectedException \DictTransformer\Exceptions\MissingIncludeException
+     * @expectedException \Bdt\DictTransformer\Exceptions\MissingIncludeException
      */
     public function testMissingInclude()
     {
@@ -39,7 +39,7 @@ class ExceptionTest extends TestCase
     }
 
     /**
-     * @expectedException \DictTransformer\Exceptions\MissingGetIdException
+     * @expectedException \Bdt\DictTransformer\Exceptions\MissingGetIdException
      */
     public function testMissingGetId()
     {

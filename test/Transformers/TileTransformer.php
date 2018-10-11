@@ -2,9 +2,9 @@
 
 namespace Test\Transformers;
 
-use DictTransformer\Resources\Collection;
+use Bdt\DictTransformer\Resources\Collection;
 use Test\Entities\Tile;
-use DictTransformer\TransformerInterface;
+use Bdt\DictTransformer\TransformerInterface;
 
 /**
  * @package App\Transformers
