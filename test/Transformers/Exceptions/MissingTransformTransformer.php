@@ -4,9 +4,6 @@ namespace Test\Transformers\Exceptions;
 
 use Bdt\DictTransformer\TransformerInterface;
 
-/**
- * @package App\Transformers
- */
 class MissingTransformTransformer implements TransformerInterface
 {
     public function getKey()

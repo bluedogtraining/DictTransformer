@@ -6,9 +6,6 @@ use Bdt\DictTransformer\Resources\Collection;
 use Test\Entities\Tile;
 use Bdt\DictTransformer\TransformerInterface;
 
-/**
- * @package App\Transformers
- */
 class TileTransformer implements TransformerInterface
 {
     public function getKey()

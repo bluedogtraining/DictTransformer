@@ -8,9 +8,6 @@ use Bdt\DictTransformer\TransformerInterface;
 
 use Bdt\DictTransformer\Resources\Item;
 
-/**
- * @package App\Transformers
- */
 class FieldTransformer implements TransformerInterface
 {
 
