@@ -12,6 +12,11 @@ class SettlementTransformer implements TransformerInterface
         return 'settlements';
     }
 
+    public function getIdField()
+    {
+        return 'id';
+    }
+
     public function getId($entity)
     {
         return $entity->getId();

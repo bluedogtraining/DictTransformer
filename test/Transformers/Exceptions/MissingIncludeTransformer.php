@@ -14,6 +14,11 @@ class MissingIncludeTransformer implements TransformerInterface
         return 'tiles';
     }
 
+    public function getIdField()
+    {
+        return 'id';
+    }
+
     public function getId($entity)
     {
         return $entity->getId();

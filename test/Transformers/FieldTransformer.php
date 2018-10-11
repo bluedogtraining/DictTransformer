@@ -24,6 +24,11 @@ class FieldTransformer implements TransformerInterface
         return $etntity->getId(); 
     }
 
+    public function getIdField()
+    {
+        return 'id';
+    }
+
     /**
      * @param Field $field
      *

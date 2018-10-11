@@ -14,6 +14,11 @@ class MissingGetIdTransformer implements TransformerInterface
         return 'fields';
     }
 
+    public function getIdField()
+    {
+        return 'id';
+    }
+
     public function transform($data)
     {
         return [

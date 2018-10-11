@@ -187,10 +187,10 @@ class DictTransformer
             $data[$current] = $this->transformResource($resource, $rest);
         }
 
-        $idField = $this->getIdField($transformer);
+        $idField = $transformer->getIdField();
 
         if (!isset($data[$idField])) {
-            throw new InvalidIdException;
+            throw new InvalidIdException($idField);
         }
 
         $this->entities[$transformer->getKey()][$data[$idField]] = isset($this->entities[$transformer->getKey()][$data[$idField]])
@@ -221,38 +221,5 @@ class DictTransformer
             'current' => $includeString,
             'rest'    => [],
         ];
-    }
-
-    /**
-     * @param TransformerInterface $transformer
-     *
-     * @return string
-     */
-    private function getIdField(TransformerInterface $transformer): string
-    {
-        $transformerName = get_class($transformer);
-        return $this->hasIdConstant($transformer) ? $transformerName::ID : 'id';
-    }
-
-    /**
-     * @param TransformerInterface $transformer
-     *
-     * @return bool
-     */
-    private function hasIdConstant(TransformerInterface $transformer)
-    {
-        return $this->hasConstant($transformer, 'ID');
-    }
-
-    /**
-     * @param TransformerInterface $transformer
-     * @param string               $constant
-     *
-     * @return bool
-     */
-    private function hasConstant(TransformerInterface $transformer, string $constant)
-    {
-        $transformerName = get_class($transformer);
-        return defined("$transformerName::$constant");
     }
 }
