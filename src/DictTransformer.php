@@ -122,7 +122,6 @@ class DictTransformer
         $keys = [];
 
         foreach ($entities as $entity) {
-
             $key = $this->transformEntity($entity, $transformer, $includes);
 
             $keys[] = $key;
@@ -162,15 +161,13 @@ class DictTransformer
 
         if (isset($this->cache[$key][$entityId])) {
             $data = $this->cache[$key][$entityId];
-        }
-        else {
+        } else {
             $data = $transformer->transform($entity);
 
             $this->cache[$key][$entityId] = $data;
         }
 
         foreach ($includes as $include) {
-
             $parsedIncludeString = $this->parseIncludeString($include);
 
             $current = $parsedIncludeString['current'];
@@ -208,7 +205,6 @@ class DictTransformer
         $position = strpos($includeString, '.');
 
         if ($position !== false) {
-
             return [
                 'current' => substr($includeString, 0, $position),
                 'rest'    => [substr($includeString, $position + 1)],
